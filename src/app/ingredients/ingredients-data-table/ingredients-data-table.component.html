@@ -1,0 +1,23 @@
+<mat-card class="ingredients">
+    <mat-form-field *ngIf="(products$ | async) as products; else loading" appearance="outline">
+        <mat-select [formControl]="productSearchInput">
+          <mat-option *ngFor="let product of products" [value]="product">
+            {{product | uppercase}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    <mat-form-field class="search-ingredients" appearance="outline">
+        <mat-label>Search Ingredients...</mat-label>
+        <input matInput placeholder="Search Ingredients..." 
+            type="text" [formControl]="ingredientSearchInput" autocomplete="off">
+        <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>    
+
+    <app-ingredients-list
+        [rowData]="(ingredients$ | async)"
+        >
+    </app-ingredients-list>
+    <ng-template #loading>
+      <mat-spinner [diameter]=40></mat-spinner>
+    </ng-template>
+</mat-card>

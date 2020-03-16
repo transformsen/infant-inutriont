@@ -1,0 +1,12 @@
+@import '../../../theme/common.scss';
+
+.ingredients{
+    margin: 20px;
+    .search-ingredients{
+        float: right;
+    }
+}
+
+::ng-deep .mat-select-arrow{
+    color: #00bfff;
+}

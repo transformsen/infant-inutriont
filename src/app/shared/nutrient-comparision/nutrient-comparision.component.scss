@@ -1,0 +1,19 @@
+.compare-search{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    .compare-with{
+        margin-top: 15px;
+        margin-left: 25px;
+        margin-right: 25px;
+    } 
+    .default-selection{
+        margin-top: 15px;
+        font-size: larger;
+    }
+}
+.comparation-table{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}

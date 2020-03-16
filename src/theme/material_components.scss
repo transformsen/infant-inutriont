@@ -1,0 +1,39 @@
+@import '~@angular/material/theming';
+@import './common.scss';
+
+@include mat-core();
+$inutriont-primary: mat-palette($mat-light-blue);
+$inutriont-accent:  mat-palette($mat-pink, 500, 900, A100);
+$inutriont-warn:    mat-palette($mat-deep-orange);
+$inutriont-theme: mat-light-theme($inutriont-primary, $inutriont-accent, $inutriont-warn);
+@include angular-material-theme($inutriont-theme);
+
+mat-spinner{
+    @include margin-auto();
+    margin-top: 20vh;
+}
+
+mat-tab-body { @include content-body(); }
+
+.mat-tab-header{
+    background-color: #ffffff;
+}
+nav{    
+    .mat-tab-link-container{
+        background-color: black;
+        height: 60px;
+    }
+    .mat-tab-label, .mat-tab-link{
+        color: white;
+        text-transform: uppercase;
+    }
+    .mat-tab-links{
+        margin-top: 7px;
+    }
+}
+.mat-tab-label-container{
+    margin-left: 40px;
+}
+.mat-tab-label .mat-tab-label-content{
+    text-transform: uppercase;
+}

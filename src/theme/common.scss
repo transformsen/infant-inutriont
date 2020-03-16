@@ -1,0 +1,16 @@
+@import '~@angular/material/theming';
+
+$background-color-smoke: #EFF2F7;
+$page-title-font-size: 20px;
+$page-subtitle-font-size: 15px;
+
+@mixin content-body() {
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+@mixin margin-auto() {
+    display: block;
+    margin: auto;
+}

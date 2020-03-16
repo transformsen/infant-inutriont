@@ -1,0 +1,20 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Brand Most Nutrient</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <table *ngIf="(brandMostNutrient$ | async) as brandMostNutrients; else loading">
+            <tbody>
+                <tr *ngFor="let brandMostNutrient of brandMostNutrients">
+                    <td><img class="brand-avatar" src="{{brandMostNutrient.image}}" /></td>
+                    <td>{{brandMostNutrient.brand | uppercase}}</td>
+                    <td>{{brandMostNutrient.nutrient | uppercase}}</td>
+                    <td>{{brandMostNutrient.percentage | percent}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <ng-template #loading>
+            <mat-spinner [diameter]=40></mat-spinner>
+        </ng-template>
+      </mat-card-content>
+</mat-card>

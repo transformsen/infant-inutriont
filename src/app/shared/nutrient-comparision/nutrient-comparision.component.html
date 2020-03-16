@@ -1,0 +1,35 @@
+<mat-card>
+  <mat-card-header class="comparation-table">
+    <mat-card-title>NUTRIANT TABLE COMPARATION</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="compare-search" *ngIf="(products$ | async) as products; else loadingproduct">
+      <mat-form-field *ngIf="(!defaultSearch); else readonly " appearance="outline">
+        <mat-select [formControl]="search1">
+          <mat-option *ngFor="let product of products" [value]="product">
+            {{product | uppercase}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <ng-template #readonly>
+        <span class="default-selection">{{defaultSearch | uppercase}}</span>
+      </ng-template>
+      <div class="compare-with"> COMPARSION WITH</div>
+      <mat-form-field appearance="outline">
+        <mat-select [formControl]="search2">
+          <mat-option *ngFor="let product of products" [value]="product">
+            {{product | uppercase}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <ng-template #loadingproduct>
+      <mat-spinner [diameter]=40></mat-spinner>
+    </ng-template>
+    <div *ngIf="(chartCompData$ | async) as chartCompData;" style="display: block;">
+      <canvas baseChart [datasets]="chartCompData.data" [options]="barChartOptions" [labels]="chartCompData.label"
+        [colors]="colors" [legend]="barChartLegend" [chartType]="barChartType">
+      </canvas>
+    </div>
+  </mat-card-content>
+</mat-card>
