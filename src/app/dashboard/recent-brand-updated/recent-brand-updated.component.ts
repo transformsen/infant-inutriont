@@ -10,14 +10,14 @@ import { DashboardService } from '../dashboard.service';
 })
 export class RecentBrandUpdatedComponent implements OnInit {
 
-  recentUpdatedBrand$: Observable<RecentUpdatedBrand>
+  recentUpdatedBrand$: Observable<RecentUpdatedBrand>;
   constructor(
     private dashboardService: DashboardService
   ) { }
 
 
   ngOnInit(): void {
-    this.recentUpdatedBrand$ = this.dashboardService.getRecentUpdatedBrand()
+    this.recentUpdatedBrand$ = this.dashboardService.getRecentUpdatedBrand();
   }
 
 }

@@ -14,23 +14,23 @@ import { ProductInformationService } from '../product-information.service';
 })
 export class WebProductRankComponent implements OnInit {
 
-    @Input() product: string
+    @Input() product: string;
     options: ChartOptions = {
     responsive: false,
     maintainAspectRatio: false,
-    scales:{
-      xAxes:[{
-        gridLines:{
+    scales: {
+      xAxes: [{
+        gridLines: {
           display: false
         }
       }],
-      yAxes:[{
-        gridLines:{
+      yAxes: [{
+        gridLines: {
           display: false
         },
       }]
     }
-  }
+  };
   public colors: Color[] = [
     {
       backgroundColor: 'turquoise',
@@ -41,29 +41,29 @@ export class WebProductRankComponent implements OnInit {
   public lineChartPlugins = [];
 
   charData$: Observable<BarChartData>;
-  monthSearch : FormControl = new FormControl('Monthly')
-  months: string[] = ['Monthly', 'Yearly', 'Weekly']
+  monthSearch: FormControl = new FormControl('Monthly');
+  months: string[] = ['Monthly', 'Yearly', 'Weekly'];
 
-  
+
   constructor(private productInformationService: ProductInformationService) { }
 
   ngOnInit(): void {
     this.charData$ = this.monthSearch.valueChanges.pipe(
       startWith('Monthly'),
-      switchMap((search)=>{
+      switchMap((search) => {
         return this.productInformationService.getProductRank(search)
-          .pipe(map((results)=>{
-            const label = []
-            const data = []
-            for(const r of results){
-              label.push(r.yAxis)
-              data.push(r.rank)
+          .pipe(map((results) => {
+            const label = [];
+            const data = [];
+            for (const r of results) {
+              label.push(r.yAxis);
+              data.push(r.rank);
             }
-            return {label, data: [{data: data}]}
+            return {label, data: [{data}]};
           })
-          )
+          );
         })
-    )
+    );
   }
 
 }

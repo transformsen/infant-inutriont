@@ -9,12 +9,12 @@ export class UpDownIndicationComponent implements OnInit {
 
   @Input() data: number;
 
-  isPositive:boolean = false;
+  isPositive = false;
   constructor() { }
 
   ngOnInit(): void {
-    if(this.data> 0 ){
-      this.isPositive = true
+    if (this.data > 0 ) {
+      this.isPositive = true;
     }
   }
 

@@ -21,34 +21,34 @@ export class BrandReviewComponent implements OnInit {
 
   options: ChartOptions = {
     cutoutPercentage: 70
-  }
+  };
 
   colors: Color[] = [{backgroundColor: ['turquoise', 'blue', 'aliceblue']},
-  {backgroundColor: ['turquoise', 'blue', 'aliceblue']}]
+  {backgroundColor: ['turquoise', 'blue', 'aliceblue']}];
 
   public chartData$: Observable<MultiDataSet[]>;
-  
-  productSearchInput : FormControl = new FormControl('enfamil')
+
+  productSearchInput: FormControl = new FormControl('enfamil');
   products$: Observable<string[]>;
-  
+
   constructor( private dashboardService: DashboardService,
-    private ingredientsService: IngredientsService) { }
+               private ingredientsService: IngredientsService) { }
 
   ngOnInit(): void {
-    const serach$ = this.brand ? of(this.brand) : this.productSearchInput.valueChanges 
+    const serach$ = this.brand ? of(this.brand) : this.productSearchInput.valueChanges;
     this.chartData$ = serach$.pipe(
       startWith(''),
-      switchMap((search)=>{
+      switchMap((search) => {
         return this.dashboardService.getBrandReview(search)
-          .pipe(map((results)=>{
-            const data = []
-            for(const result of results){
-              data.push([result.positive, result.negative, result.nutral])
+          .pipe(map((results) => {
+            const data = [];
+            for (const result of results) {
+              data.push([result.positive, result.negative, result.nutral]);
             }
             return data;
-          }))
+          }));
       })
-    ) 
+    );
     this.products$ = this.ingredientsService.getProductsList();
   }
 

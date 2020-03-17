@@ -20,7 +20,7 @@ import { AbsPipe } from './pipe/abs.pipe';
 import { BrandReviewComponent } from './brand-review/brand-review.component';
 
 @NgModule({
-  declarations: [IngredientsListComponent, NutrientComparisionComponent, 
+  declarations: [IngredientsListComponent, NutrientComparisionComponent,
     UpDownIndicationComponent, AbsPipe, BrandReviewComponent],
   imports: [
     CommonModule, AgGridModule, MatSelectModule, MatCardModule,
@@ -32,7 +32,7 @@ import { BrandReviewComponent } from './brand-review/brand-review.component';
     NutrientComparisionComponent,
     UpDownIndicationComponent,
     BrandReviewComponent,
-    
+
     MatCardModule,
     MatInputModule,
     MatProgressSpinnerModule,
@@ -41,7 +41,7 @@ import { BrandReviewComponent } from './brand-review/brand-review.component';
     MatTabsModule,
     MatListModule,
     MatProgressBarModule,
-    
+
     AgGridModule,
     ChartsModule,
 

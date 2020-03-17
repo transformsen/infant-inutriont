@@ -15,42 +15,42 @@ import { ProductInformationService } from '../product-information.service';
 export class ProductAnalysisComponent implements OnInit {
 
   @Input() product: string;
-  chartData$: Observable<any>
-  
-  label: Label[] = ['Jan', 'Feb', 'Mar', 'Apr', 'May']
+  chartData$: Observable<any>;
+
+  label: Label[] = ['Jan', 'Feb', 'Mar', 'Apr', 'May'];
   barChartType: ChartType = 'bar';
   barChartLegend = true;
   barChartOptions: ChartOptions = {
     responsive: false,
     maintainAspectRatio: false,
-    scales:{
-      xAxes:[{
-        gridLines:{
+    scales: {
+      xAxes: [{
+        gridLines: {
           display: false
         }
       }],
-      yAxes:[{
-        gridLines:{
+      yAxes: [{
+        gridLines: {
           display: true
         },
-        ticks:{
+        ticks: {
           beginAtZero: false,
-          callback: (value)=>{
-            if(value >= 1000000000000){
-              return `${value/1000000000000}T`
-            }else if(value >= 1000000000){
-              return `${value/1000000000}B`
-            }else if(value >= 1000000){
-              return `${value/1000000}M`
-            }else if(value >= 1000){
-              return `${value/10000}K`
+          callback: (value) => {
+            if (value >= 1000000000000) {
+              return `${value / 1000000000000}T`;
+            } else if (value >= 1000000000) {
+              return `${value / 1000000000}B`;
+            } else if (value >= 1000000) {
+              return `${value / 1000000}M`;
+            } else if (value >= 1000) {
+              return `${value / 10000}K`;
             }
           }
         }
       }]
     }
   };
-  colors: Color[] = [ {backgroundColor: 'blue'}]
+  colors: Color[] = [ {backgroundColor: 'blue'}];
 
   constructor(
     private productInformationService: ProductInformationService
@@ -58,10 +58,10 @@ export class ProductAnalysisComponent implements OnInit {
 
   ngOnInit(): void {
     this.chartData$ =  this.productInformationService.getProductAnalysis(this.product)
-    .pipe(map((results)=>{
+    .pipe(map((results) => {
       return {data: [{data: results.ratings,  barThickness: 8, borderWidth: 0}],
-      percentage: results.percentage, totalRatings: results.totalRating}
-    }))
+      percentage: results.percentage, totalRatings: results.totalRating};
+    }));
   }
 
 }

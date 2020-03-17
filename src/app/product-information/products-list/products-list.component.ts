@@ -15,18 +15,18 @@ export class ProductsListComponent implements OnInit {
 
   constructor(private productInformationService: ProductInformationService,
               private router: Router) { }
-  productList$: Observable<Product[]>
-  productSearchInput : FormControl = new FormControl('')
+  productList$: Observable<Product[]>;
+  productSearchInput: FormControl = new FormControl('');
 
   ngOnInit(): void {
     this.productList$ =  this.productSearchInput.valueChanges.pipe(
       startWith(''),
-      switchMap((product=>this.productInformationService.getProducts(product)))
-    ) 
+      switchMap((product => this.productInformationService.getProducts(product)))
+    );
   }
 
-  viewDetails(name: string){
-    this.router.navigate([`product-information/details/${name}`])
+  viewDetails(name: string) {
+    this.router.navigate([`product-information/details/${name}`]);
   }
 
 }

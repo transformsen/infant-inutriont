@@ -18,16 +18,16 @@ export class ProductDetailComponent implements OnInit {
   productName: string;
 
   constructor(private activatedRoute: ActivatedRoute,
-    private ingredientsService: IngredientsService,
-    private productInformationService: ProductInformationService) { }
+              private ingredientsService: IngredientsService,
+              private productInformationService: ProductInformationService) { }
 
   ngOnInit(): void {
     this.productDetail$ = this.activatedRoute.params.pipe(
-      switchMap((param)=>{
-        this.productName = param.name
+      switchMap((param) => {
+        this.productName = param.name;
         return zip(this.ingredientsService.getIngredients(this.productName, ''),
-            this.productInformationService.getProductDetails(this.productName))
+            this.productInformationService.getProductDetails(this.productName));
       })
-    )    
+    );
   }
 }

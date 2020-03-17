@@ -11,21 +11,21 @@ import { map } from 'rxjs/operators';
 })
 export class BrandRatingsComponent implements OnInit {
 
-  brandRatings$: Observable<BrandRatings[]>
-  
+  brandRatings$: Observable<BrandRatings[]>;
+
   constructor(
     private dashboardService: DashboardService
   ) { }
 
   ngOnInit(): void {
     this.brandRatings$ =  this.dashboardService.getBrandRatings()
-    .pipe(map((results)=>{
-      for(const result of results){
-        const marginTop = `${Math.abs((result.ratings/1000)*2-50)}px`;
+    .pipe(map((results) => {
+      for (const result of results) {
+        const marginTop = `${Math.abs((result.ratings / 1000) * 2 - 50)}px`;
         result.marginTop = marginTop;
       }
       return results;
-    }))
+    }));
   }
 
 }

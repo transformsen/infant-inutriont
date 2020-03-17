@@ -12,7 +12,7 @@ import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
-  declarations: [DashboardComponent, BrandTrendingInmarketComponent, RecentBrandUpdatedComponent, BrandPriceUpdatedComponent, 
+  declarations: [DashboardComponent, BrandTrendingInmarketComponent, RecentBrandUpdatedComponent, BrandPriceUpdatedComponent,
     BrandRatingsComponent, BrandRatingsDetailsComponent],
   imports: [
     CommonModule,

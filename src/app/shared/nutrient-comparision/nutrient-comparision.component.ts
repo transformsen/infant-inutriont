@@ -20,60 +20,61 @@ export class NutrientComparisionComponent implements OnInit {
   chartCompData$: Observable<ChartCompData>;
   products$: Observable<string[]>;
 
-  search1 : FormControl = new FormControl('')
-  search2 : FormControl = new FormControl('')
+  search1: FormControl = new FormControl('');
+  search2: FormControl = new FormControl('');
 
   barChartType: ChartType = 'horizontalBar';
   barChartLegend = true;
   barChartOptions: ChartOptions = {
     responsive: true,
-    scales:{
-      xAxes:[{
-        gridLines:{
+    scales: {
+      xAxes: [{
+        gridLines: {
           display: false
         }
       }],
-      yAxes:[{
-        gridLines:{
+      yAxes: [{
+        gridLines: {
           display: false
         }
       }]
     }
   };
-  colors: Color[] = [{backgroundColor: 'turquoise'}, {backgroundColor: 'blue'}]
+  colors: Color[] = [{backgroundColor: 'turquoise'}, {backgroundColor: 'blue'}];
 
   constructor(private nutrientService: NutrientService,
-    private ingredientsService: IngredientsService) { }
+              private ingredientsService: IngredientsService) { }
 
   ngOnInit(): void {
     this.products$ = this.ingredientsService.getProductsList();
     const search1$ = (this.defaultSearch) ? of(this.defaultSearch) : this.search1.valueChanges;
     this.chartCompData$ = combineLatest([search1$, this.search2.valueChanges])
-      .pipe(switchMap(([search1, search2])=>{
+      .pipe(switchMap(([search1, search2]) => {
         return zip(...[this.nutrientService.getNutrientPrcentage(search1),
           this.nutrientService.getNutrientPrcentage(search2)])
-          .pipe(map(([result1, result2])=>{
+          .pipe(map(([result1, result2]) => {
             const nutrient: string[] = [];
             const data1 = [];
             const  data2 = [];
-            for(const r of result1){
-              nutrient.push(r.nutrient.toUpperCase())
-              data1.push(r.percentage)
+            for (const r of result1) {
+              nutrient.push(r.nutrient.toUpperCase());
+              data1.push(r.percentage);
             }
-            for(const r of result2){
-              if(!nutrient.includes(r.nutrient.toUpperCase()))
-                nutrient.push(r.nutrient.toUpperCase())
-              data2.push(r.percentage)
+            for (const r of result2) {
+              if (!nutrient.includes(r.nutrient.toUpperCase())) {
+                nutrient.push(r.nutrient.toUpperCase());
+              }
+              data2.push(r.percentage);
             }
             const chartCompData: ChartCompData = {
               label: nutrient,
               data: [{data: data1, barThickness: 10, borderWidth: 0, label: search1.toUpperCase()},
                 {data: data2, barThickness: 10, borderWidth: 0, label: search2.toUpperCase()}]
-            }
-            return chartCompData; 
-          }))
-      }))
-    
+            };
+            return chartCompData;
+          }));
+      }));
+
   }
 
 }

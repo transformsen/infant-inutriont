@@ -15,8 +15,8 @@ export class IngredientsDataTableComponent implements OnInit {
   products$: Observable<string[]>;
   ingredients$: Observable<Ingredients[]>;
 
-  productSearchInput : FormControl = new FormControl('enfamil')
-  ingredientSearchInput: FormControl = new FormControl('')
+  productSearchInput: FormControl = new FormControl('enfamil');
+  ingredientSearchInput: FormControl = new FormControl('');
 
   constructor(private ingredientsService: IngredientsService) { }
 
@@ -24,10 +24,10 @@ export class IngredientsDataTableComponent implements OnInit {
     this.ingredients$ = combineLatest([
       this.productSearchInput.valueChanges.pipe(startWith('')),
       this.ingredientSearchInput.valueChanges.pipe(startWith(''))
-    ]).pipe(debounceTime(400), switchMap((search)=>{
-      return this.ingredientsService.getIngredients(search[0], search[1])
-    }))
-    
+    ]).pipe(debounceTime(400), switchMap((search) => {
+      return this.ingredientsService.getIngredients(search[0], search[1]);
+    }));
+
     this.products$ = this.ingredientsService.getProductsList();
   }
 

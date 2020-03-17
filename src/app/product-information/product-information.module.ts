@@ -13,13 +13,13 @@ import { NutrientModule } from '../nutrient/nutrient.module';
 
 
 @NgModule({
-  declarations: [ProductsListComponent, 
-    ProductDetailComponent, 
-    WebProductRankComponent, 
-    ProductAnalysisComponent, 
+  declarations: [ProductsListComponent,
+    ProductDetailComponent,
+    WebProductRankComponent,
+    ProductAnalysisComponent,
     ProductSalesComponent],
   imports: [
-    CommonModule, 
+    CommonModule,
     SharedModule,
     HttpClientModule,
     ProductInformationRoutingModule

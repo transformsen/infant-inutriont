@@ -8,7 +8,7 @@ import { SharedModule } from '../shared/shared.module';
 import { NutrientTableComparisionComponent } from './nutrient-table-comparision/nutrient-table-comparision.component';
 
 @NgModule({
-  declarations: [NutrientComponent, BrandMostNutrientComponent, 
+  declarations: [NutrientComponent, BrandMostNutrientComponent,
     NutrientTableComparisionComponent],
   imports: [
     CommonModule,

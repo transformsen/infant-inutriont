@@ -10,8 +10,8 @@ import { Observable } from 'rxjs';
 })
 export class BrandPriceUpdatedComponent implements OnInit {
 
-  brandPriceUpdated$: Observable<BrandPriceUpdated[]>
-  
+  brandPriceUpdated$: Observable<BrandPriceUpdated[]>;
+
   constructor(
     private dashboardService: DashboardService
   ) { }

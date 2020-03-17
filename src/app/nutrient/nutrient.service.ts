@@ -8,17 +8,17 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class NutrientService {
-    
+
   apiUrl: string = environment.apiUrl;
-  
-  constructor(private httpClinet : HttpClient) { }
+
+  constructor(private httpClinet: HttpClient) { }
 
   getBrandMostNutrient(): Observable<BrandMostNutrient[]> {
-    return this.httpClinet.get<BrandMostNutrient[]>(`${this.apiUrl}/brand-most-nutrient`)  
+    return this.httpClinet.get<BrandMostNutrient[]>(`${this.apiUrl}/brand-most-nutrient`);
   }
 
-  getNutrientPrcentage(product: string) :Observable<NutrientPrcentage[]> {
-    return this.httpClinet.get<NutrientPrcentage[]>(`${this.apiUrl}/nutrient-percentage?product=${product}`)
+  getNutrientPrcentage(product: string): Observable<NutrientPrcentage[]> {
+    return this.httpClinet.get<NutrientPrcentage[]>(`${this.apiUrl}/nutrient-percentage?product=${product}`);
   }
 
 }

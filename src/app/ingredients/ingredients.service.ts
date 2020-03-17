@@ -8,16 +8,16 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class IngredientsService {
-  
+
   apiUrl: string = environment.apiUrl;
   constructor(private httpClient: HttpClient) { }
 
   getIngredients(product: string, ingredient: string): Observable<Ingredients[]> {
-    return this.httpClient.get<Ingredients[]>(`${this.apiUrl}/ingredients?product=${product}&ingredient=${ingredient}`)
+    return this.httpClient.get<Ingredients[]>(`${this.apiUrl}/ingredients?product=${product}&ingredient=${ingredient}`);
   }
 
   getProductsList(): Observable<string[]> {
-    return this.httpClient.get<string[]>(`${this.apiUrl}/products-list`)
+    return this.httpClient.get<string[]>(`${this.apiUrl}/products-list`);
   }
 
 }
