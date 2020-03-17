@@ -3,25 +3,42 @@
         <i class="fa fa-angle-left"></i>
     </div>
 </mat-card>
-<mat-card class="product-info-card" *ngIf="(productDetail$ | async) as productDetail">
-    <mat-card-header>
-        <mat-card-title class="product-title">Product Information</mat-card-title>
-        <mat-card-subtitle>About {{productDetail[1].name | uppercase}}</mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-        <div class="product-content">{{productDetail[1].description}}</div>
-    <mat-tab-group>
-        <mat-tab label="Ingredients List">            
-                <app-ingredients-list
-                [rowData]="productDetail[0]"
-                >
-            </app-ingredients-list>
-        </mat-tab>
-        <mat-tab label="Nutrient List"> 
-            <app-nutrient-comparision [defaultSearch]="productName"></app-nutrient-comparision>
-        </mat-tab>
-        <mat-tab label="Details Info"> Details Info </mat-tab>
-    </mat-tab-group>
-    
-    </mat-card-content>
-  </mat-card>
+<div class="product-details-container">
+<div class="row">
+    <mat-card class="product-info-card" *ngIf="(productDetail$ | async) as productDetail; else loading" class="col-xs-6">
+        <mat-card-header>
+            <mat-card-title class="product-title">Product Information</mat-card-title>
+            <mat-card-subtitle>About {{productDetail[1].name | uppercase}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <div>{{productDetail[1].description}}</div>
+            <mat-tab-group>
+                <mat-tab label="Ingredients List">
+                    <app-ingredients-list [rowData]="productDetail[0]">
+                    </app-ingredients-list>
+                </mat-tab>
+                <mat-tab label="Nutrient List">
+                    <app-nutrient-comparision [defaultSearch]="productName"></app-nutrient-comparision>
+                </mat-tab>
+                <mat-tab label="Details Info"> Details Info </mat-tab>
+            </mat-tab-group>
+
+        </mat-card-content>
+    </mat-card>
+    <ng-template #loading>
+        <mat-spinner [diameter]=40></mat-spinner>
+    </ng-template>
+    <div class="col-xs-6 detail-chart">
+        <app-web-product-rank [product]="productName"></app-web-product-rank>
+        <div class="row">
+            <div class="col-xs-6">
+            <app-brand-review [brand]="productName"></app-brand-review>
+        </div>
+        <div class="col-xs-6">
+            <app-product-analysis [product]="productName"></app-product-analysis>
+        </div>
+        </div>        
+        <app-product-sales [product]="productName"> </app-product-sales>
+    </div>
+</div>
+</div>

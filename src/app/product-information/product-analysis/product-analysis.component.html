@@ -1,1 +1,25 @@
-<p>product-analysis works!</p>
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Product Analysis</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div class="product-analysis" *ngIf="(chartData$ | async) as charData; else loading">
+            <div style="display: block;">
+                <canvas baseChart [datasets]="charData.data" [options]="barChartOptions" [labels]="label" [height]=150
+                    [width]=200 [colors]="colors" [legend]=false [chartType]="barChartType">
+                </canvas>
+            </div>
+            <div class="rating-content">
+                <div>Ratings</div>
+                <div class="rating">{{charData.totalRatings}}</div>
+                <div>
+                    <app-up-down-indication [data]="charData.percentage">
+                    </app-up-down-indication>
+                </div>
+            </div>
+        </div>
+        <ng-template #loading>
+            <mat-spinner [diameter]=40></mat-spinner>
+        </ng-template>
+    </mat-card-content>
+</mat-card>

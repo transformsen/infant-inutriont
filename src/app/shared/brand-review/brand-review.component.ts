@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Label, MultiDataSet, Color } from 'ng2-charts';
 import { ChartType, ChartOptions } from 'chart.js';
 import { Observable, pipe, of } from 'rxjs';
-import { DashboardService } from '../dashboard.service';
+import { DashboardService } from '../../dashboard/dashboard.service';
 import { IngredientsService } from 'src/app/ingredients/ingredients.service';
 import { FormControl } from '@angular/forms';
 import { startWith, switchMap, map } from 'rxjs/operators';

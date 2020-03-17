@@ -1,7 +1,14 @@
-.product-info-card{
-    width: 50%;
+.product-details-container{
     margin: 20px;
 }
+
+.detail-chart{
+    .row{
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+}
+
 .product-content{
     height: 40px;
     overflow: hidden;

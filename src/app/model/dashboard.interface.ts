@@ -36,6 +36,7 @@ export interface BrandRatings{
     marginTop?: string
 }
 
+
 export interface BrandRatingsPointData{
     Labels: number[]
     data: []

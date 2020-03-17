@@ -17,9 +17,11 @@ import { IngredientsListComponent } from './ingredients-list/ingredients-list.co
 import { NutrientComparisionComponent } from './nutrient-comparision/nutrient-comparision.component';
 import { UpDownIndicationComponent } from './up-down-indication/up-down-indication.component';
 import { AbsPipe } from './pipe/abs.pipe';
+import { BrandReviewComponent } from './brand-review/brand-review.component';
 
 @NgModule({
-  declarations: [IngredientsListComponent, NutrientComparisionComponent, UpDownIndicationComponent, AbsPipe],
+  declarations: [IngredientsListComponent, NutrientComparisionComponent, 
+    UpDownIndicationComponent, AbsPipe, BrandReviewComponent],
   imports: [
     CommonModule, AgGridModule, MatSelectModule, MatCardModule,
     MatInputModule,  MatProgressSpinnerModule, ChartsModule,
@@ -29,6 +31,7 @@ import { AbsPipe } from './pipe/abs.pipe';
     IngredientsListComponent,
     NutrientComparisionComponent,
     UpDownIndicationComponent,
+    BrandReviewComponent,
     
     MatCardModule,
     MatInputModule,

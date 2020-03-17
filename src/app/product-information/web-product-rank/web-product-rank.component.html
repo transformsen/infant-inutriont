@@ -1,1 +1,27 @@
-<p>web-product-rank works!</p>
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Web Product Rank</mat-card-title>
+           <mat-form-field class="month-selection" appearance="outline">
+            <mat-select [formControl]="monthSearch">
+                <mat-option *ngFor="let month of months" [value]="month">
+                    {{month | uppercase}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </mat-card-header>
+    <mat-card-content>
+        
+
+        <div *ngIf="(charData$ | async) as charData; else loading" style="display: block;">
+            <canvas baseChart [datasets]="charData.data" [options]="options" 
+                [labels]="charData.label"
+                [height]=200
+                [width]=600
+                [colors]="colors" [legend]=false [chartType]="chartType">
+            </canvas>
+        </div>
+        <ng-template #loading>
+            <mat-spinner [diameter]=40></mat-spinner>
+          </ng-template>
+    </mat-card-content>
+</mat-card>
