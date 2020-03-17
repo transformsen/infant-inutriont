@@ -2,7 +2,7 @@
   <mat-card-header>
       <mat-card-title>Brand Review</mat-card-title>
       <mat-card-subtitle>By customer information</mat-card-subtitle>
-      <mat-form-field *ngIf="(products$ | async) as products;" appearance="outline">
+      <mat-form-field *ngIf="!brand && (products$ | async) as products;" appearance="outline">
         <mat-select [formControl]="productSearchInput">
           <mat-option *ngFor="let product of products" [value]="product">
             {{product | uppercase}}

@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Label, MultiDataSet, Color } from 'ng2-charts';
 import { ChartType, ChartOptions } from 'chart.js';
-import { Observable, pipe } from 'rxjs';
+import { Observable, pipe, of } from 'rxjs';
 import { DashboardService } from '../dashboard.service';
 import { IngredientsService } from 'src/app/ingredients/ingredients.service';
 import { FormControl } from '@angular/forms';
@@ -13,6 +13,8 @@ import { startWith, switchMap, map } from 'rxjs/operators';
   styleUrls: ['./brand-review.component.scss']
 })
 export class BrandReviewComponent implements OnInit {
+
+  @Input() brand?: string;
 
   public chartLabels: Label[] = ['Positive', 'Negative', 'Nutral'];
   public chartType: ChartType = 'doughnut';
@@ -33,7 +35,8 @@ export class BrandReviewComponent implements OnInit {
     private ingredientsService: IngredientsService) { }
 
   ngOnInit(): void {
-    this.chartData$ = this.productSearchInput.valueChanges.pipe(
+    const serach$ = this.brand ? of(this.brand) : this.productSearchInput.valueChanges 
+    this.chartData$ = serach$.pipe(
       startWith(''),
       switchMap((search)=>{
         return this.dashboardService.getBrandReview(search)

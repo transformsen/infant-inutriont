@@ -23,7 +23,6 @@ export class ProductDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.productDetail$ = this.activatedRoute.params.pipe(
-      tap((p)=>console.log('receive param', p)),
       switchMap((param)=>{
         this.productName = param.name
         return zip(this.ingredientsService.getIngredients(this.productName, ''),

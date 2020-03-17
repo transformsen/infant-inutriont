@@ -2,3 +2,25 @@
     width: 50%;
     margin: 20px;
 }
+.product-content{
+    height: 40px;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+.header-info{
+    margin-bottom: 20px;
+    div{
+        margin-left: 20px;
+        font-weight: 500;
+    }
+    i{
+        margin-right: 10px;
+        color: #00bfff;
+        font-size: large;
+        font-weight: bold;
+    }
+}
