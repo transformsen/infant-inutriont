@@ -1,1 +1,18 @@
-<p>brand-ratings-details works!</p>
+<mat-card>
+    <div *ngIf="(ratingDetails$ | async) as ratingDetails; else loading">
+        <ag-grid-angular
+            style="width: 100%; height: 500px;"
+            class="ag-theme-material"
+            [rowData]="ratingDetails"
+            [columnDefs]="columnDefs"
+            [rowHeight]=40
+            [headerHeight]=40
+            [defaultColDef]="defaultColDef"
+            (gridReady)="onGridReady($event)"
+            >
+        </ag-grid-angular>
+    </div>
+    <ng-template #loading>
+        <mat-spinner [diameter]=40></mat-spinner>
+    </ng-template>
+</mat-card>

@@ -1,1 +1,28 @@
-<p>brand-trending-inmarket works!</p>
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Brand Trending InMarket</mat-card-title>
+        <mat-card-subtitle>Products that are Trending in Group of different bunches</mat-card-subtitle>
+        <mat-form-field class="month-selection" appearance="outline">
+            <mat-select [formControl]="monthSearch">
+                <mat-option *ngFor="let month of months" [value]="month">
+                    {{month | uppercase}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </mat-card-header>
+    <mat-card-content>
+        
+
+        <div *ngIf="(charData$ | async) as charData; else loading" style="display: block;">
+            <canvas baseChart [datasets]="charData.data" [options]="barChartOptions" 
+                [labels]="charData.label"
+                [height]=200
+                [width]=700
+                [colors]="colors" [legend]=false [chartType]="barChartType">
+            </canvas>
+        </div>
+        <ng-template #loading>
+            <mat-spinner [diameter]=40></mat-spinner>
+          </ng-template>
+    </mat-card-content>
+</mat-card>

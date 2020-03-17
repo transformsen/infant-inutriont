@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { RecentUpdatedBrand } from 'src/app/model/dashboard.interface';
+import { DashboardService } from '../dashboard.service';
 
 @Component({
   selector: 'app-recent-brand-updated',
@@ -7,9 +10,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RecentBrandUpdatedComponent implements OnInit {
 
-  constructor() { }
+  recentUpdatedBrand$: Observable<RecentUpdatedBrand>
+  constructor(
+    private dashboardService: DashboardService
+  ) { }
+
 
   ngOnInit(): void {
+    this.recentUpdatedBrand$ = this.dashboardService.getRecentUpdatedBrand()
   }
 
 }

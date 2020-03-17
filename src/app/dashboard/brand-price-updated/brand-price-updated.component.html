@@ -1,1 +1,22 @@
-<p>brand-price-updated works!</p>
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Brand Price Updated</mat-card-title>
+        <mat-card-subtitle>Selected Brand Rating on selected top price</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <table *ngIf="(brandPriceUpdated$ | async) as brandPriceUpdateds; else loading">
+            <tbody>
+                <tr *ngFor="let brandPriceUpdated of brandPriceUpdateds">
+                    <td><img class="brand-avatar" src="{{brandPriceUpdated.image}}" /></td>
+                    <td>{{brandPriceUpdated.brand | uppercase}}</td>
+                    <td>{{brandPriceUpdated.price | currency}}</td>
+                    <td><app-up-down-indication [data]="brandPriceUpdated.percentage">
+                    </app-up-down-indication></td>
+                </tr>
+            </tbody>
+        </table>
+        <ng-template #loading>
+            <mat-spinner [diameter]=40></mat-spinner>
+        </ng-template>
+      </mat-card-content>
+</mat-card>

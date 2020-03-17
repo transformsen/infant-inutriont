@@ -1,1 +1,47 @@
-<p>recent-brand-updated works!</p>
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Recent Brand Updated</mat-card-title>
+        <mat-card-subtitle>Recent activity by Brand</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <div *ngIf="(recentUpdatedBrand$ | async) as recentUpdatedBrand; else loading">
+            <div class="brand-name">{{recentUpdatedBrand.brand | uppercase}}</div>
+            <div class="brand-review-row">
+                <img class="brand-avatar" src="{{recentUpdatedBrand.image}}" />
+                <table>
+                    <col width="150">
+                    <tbody>
+                        <tr>
+                            <th>Brand Web Ratings</th>
+                            <th>Online Review</th>
+                        </tr>
+                        <tr>
+                            <td><app-up-down-indication [data]="recentUpdatedBrand.brandWebRating"></app-up-down-indication></td>
+                            <td><app-up-down-indication [data]="recentUpdatedBrand.onlineReview"></app-up-down-indication></td>
+                        </tr>
+                        <tr>
+                            <th>Selling Price</th>
+                            <th>Share Markets</th>
+                        </tr>
+                        <tr>
+                            <td><app-up-down-indication [data]="recentUpdatedBrand.sellingPrice"></app-up-down-indication></td>
+                            <td><app-up-down-indication [data]="recentUpdatedBrand.shareMarket"></app-up-down-indication></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="brand-review-percent">
+                <div>Brand Review</div>
+                <div>Postive ({{recentUpdatedBrand.positivePercentage}})%</div>
+            </div>
+            <mat-progress-bar mode="determinate" value="{{recentUpdatedBrand.positivePercentage}}"></mat-progress-bar>
+            <div>
+                <a class="view-details-link">View Details</a>
+                <i class="fa fa-angle-right view-details-link"></i>
+            </div>
+        </div>
+        <ng-template #loading>
+            <mat-spinner [diameter]=40></mat-spinner>
+        </ng-template>
+    </mat-card-content>
+</mat-card>

@@ -9,13 +9,15 @@ import { BrandPriceUpdatedComponent } from './brand-price-updated/brand-price-up
 import { BrandReviewComponent } from './brand-review/brand-review.component';
 import { BrandRatingsComponent } from './brand-ratings/brand-ratings.component';
 import { BrandRatingsDetailsComponent } from './brand-ratings-details/brand-ratings-details.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
   declarations: [DashboardComponent, BrandTrendingInmarketComponent, RecentBrandUpdatedComponent, BrandPriceUpdatedComponent, BrandReviewComponent, BrandRatingsComponent, BrandRatingsDetailsComponent],
   imports: [
     CommonModule,
-    DashboardRoutingModule
+    DashboardRoutingModule,
+    SharedModule
   ]
 })
 export class DashboardModule { }

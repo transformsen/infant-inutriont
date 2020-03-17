@@ -1,0 +1,54 @@
+.brand-avatar{
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    object-fit: cover;
+}
+.brand-name{
+    font-size: larger;
+    font-weight: 500;
+}
+
+.brand-review-row{
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    table{
+        margin-left: 20px;
+        th{
+            text-align: start;
+            font-weight:  normal;
+            color: rgba(0, 0, 0, 0.54);
+        }
+        tr{
+            font-weight: 700;
+        }
+    }
+}
+
+.brand-review-percent{
+    display: flex;
+    flex-direction: row;
+    font-weight: 500;
+    :nth-child(2){
+        margin: auto;
+        margin-right: 0;
+        font-weight:  normal;
+        color: rgba(0, 0, 0, 0.54);
+    }
+}
+.view-details-link{
+    color:#00bfff;
+    font-weight: bold;
+    cursor: pointer;
+    margin-right: 10px;
+}
+i{
+    font-size: large;
+}
+mat-progress-bar{
+    margin-top: 10px;
+    margin-bottom: 30px;
+}

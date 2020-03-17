@@ -1,1 +1,20 @@
-<p>brand-ratings works!</p>
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Brand Ratings</mat-card-title>
+        <mat-card-subtitle>Selected Brand trnding on Online Market</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+    <div *ngIf="(brandRatings$ | async) as brandRatings; else loading" class="ratings-container">
+        <div *ngFor="let brandRating of brandRatings" class="column">
+            <div>
+              <img class="brand-avatar" src="{{brandRating.image}}" [ngStyle]="{'margin-top': brandRating.marginTop}"/>
+              <div>{{brandRating.brand | uppercase}}</div>
+            </div>
+            <p>+{{brandRating.ratings}}</p>
+        </div>
+    </div>
+     <ng-template #loading>
+        <mat-spinner [diameter]=40></mat-spinner>
+    </ng-template>
+  </mat-card-content>
+</mat-card>

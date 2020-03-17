@@ -9,7 +9,8 @@ const routes: Routes = [
   },
   { path: 'ingredients', loadChildren: () => import('./ingredients/ingredients.module').then(m => m.IngredientsModule) },
   { path: 'nutrient', loadChildren: () => import('./nutrient/nutrient.module').then(m => m.NutrientModule) },
-  { path: 'dashboard', loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule) }
+  { path: 'dashboard', loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule) },
+  { path: '', redirectTo:'dashboard', pathMatch:'full'}
 ];
 
 @NgModule({

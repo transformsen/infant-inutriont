@@ -15,7 +15,7 @@ export class IngredientsDataTableComponent implements OnInit {
   products$: Observable<string[]>;
   ingredients$: Observable<Ingredients[]>;
 
-  productSearchInput : FormControl = new FormControl('enfami')
+  productSearchInput : FormControl = new FormControl('enfamil')
   ingredientSearchInput: FormControl = new FormControl('')
 
   constructor(private ingredientsService: IngredientsService) { }

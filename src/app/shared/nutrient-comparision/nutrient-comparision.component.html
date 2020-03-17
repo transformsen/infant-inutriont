@@ -27,8 +27,10 @@
       <mat-spinner [diameter]=40></mat-spinner>
     </ng-template>
     <div *ngIf="(chartCompData$ | async) as chartCompData;" style="display: block;">
-      <canvas baseChart [datasets]="chartCompData.data" [options]="barChartOptions" [labels]="chartCompData.label"
-        [colors]="colors" [legend]="barChartLegend" [chartType]="barChartType">
+      <canvas baseChart 
+        [datasets]="chartCompData.data" [options]="barChartOptions" [labels]="chartCompData.label"
+        [colors]="colors" 
+        [legend]="barChartLegend" [chartType]="barChartType">
       </canvas>
     </div>
   </mat-card-content>

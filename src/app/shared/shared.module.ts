@@ -8,14 +8,18 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatListModule} from '@angular/material/list';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+
 import { AgGridModule } from 'ag-grid-angular';
 import { ChartsModule } from 'ng2-charts';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { IngredientsListComponent } from './ingredients-list/ingredients-list.component';
 import { NutrientComparisionComponent } from './nutrient-comparision/nutrient-comparision.component';
+import { UpDownIndicationComponent } from './up-down-indication/up-down-indication.component';
+import { AbsPipe } from './pipe/abs.pipe';
 
 @NgModule({
-  declarations: [IngredientsListComponent, NutrientComparisionComponent],
+  declarations: [IngredientsListComponent, NutrientComparisionComponent, UpDownIndicationComponent, AbsPipe],
   imports: [
     CommonModule, AgGridModule, MatSelectModule, MatCardModule,
     MatInputModule,  MatProgressSpinnerModule, ChartsModule,
@@ -24,6 +28,8 @@ import { NutrientComparisionComponent } from './nutrient-comparision/nutrient-co
   exports: [
     IngredientsListComponent,
     NutrientComparisionComponent,
+    UpDownIndicationComponent,
+    
     MatCardModule,
     MatInputModule,
     MatProgressSpinnerModule,
@@ -31,6 +37,7 @@ import { NutrientComparisionComponent } from './nutrient-comparision/nutrient-co
     MatSelectModule,
     MatTabsModule,
     MatListModule,
+    MatProgressBarModule,
     
     AgGridModule,
     ChartsModule,

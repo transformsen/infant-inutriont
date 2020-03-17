@@ -1,0 +1,12 @@
+.dashboard-container{
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-top: 20px;
+    .row{
+        margin-bottom: 20px;
+        ::ng-deep mat-card{
+            height: 320px;
+        }
+    }
+    
+}
